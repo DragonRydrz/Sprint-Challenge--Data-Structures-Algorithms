@@ -1,6 +1,16 @@
-const checkBalanced = (rootNode) => {
+const checkBalanced = node => {
   /* Your code here */
+  return checkMax(node) - checkMin(node) <= 0;
+};
 
+const checkMin = node => {
+  if (!node) return 0;
+  return Math.min(checkMin(node.left), checkMin(node.right)) + 1;
+};
+
+const checkMax = node => {
+  if (!node) return 0;
+  return Math.max(checkMax(node.left), checkMax(node.right)) + 1;
 };
 
 class BinarySearchTree {
